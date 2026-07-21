@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michelle Zhu</title>
+  <meta name="description" content="Michelle Zhu — founder and operating partner to early stage deep tech and technology teams." />
+
+  <!-- Google Fonts: Fraunces (display) + Archivo (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #FCFBF8;
+      --ink: #23232B;
+      --indigo: #2B3A8F;
+      --warm-gray: #8A8577;
+
+      --display: "Fraunces", Georgia, serif;
+      --body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --measure: 65ch;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Selection nods to the accent */
+    ::selection { background: rgba(43, 58, 143, 0.14); }
+
+    a {
+      color: var(--indigo);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(43, 58, 143, 0.28);
+      transition: border-color 0.15s ease;
+    }
+    a:hover { border-bottom-color: var(--indigo); }
+
+    /* ---------- Layout helpers ---------- */
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .measure { max-width: var(--measure); }
+
+    .label {
+      font-family: var(--body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    /* ---------- Top nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(252, 251, 248, 0.88);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid rgba(35, 35, 43, 0.06);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .brand {
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: none;
+    }
+    .brand:hover { border: none; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--ink);
+      border: none;
+    }
+    .nav-links a:hover { color: var(--indigo); border: none; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem;
+      color: var(--ink);
+    }
+    .nav-toggle svg { display: block; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: clamp(3.5rem, 9vw, 6.5rem);
+      padding-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      align-items: start;
+    }
+    @media (min-width: 860px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        align-items: center;
+      }
+    }
+
+    .hero .kicker {
+      margin: 0 0 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6.4vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 0 0 1.4rem;
+    }
+    .hero h1 .accent { color: var(--indigo); }
+    .hero .subhead {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+      line-height: 1.35;
+      color: var(--ink);
+      max-width: 34ch;
+      margin: 0;
+    }
+
+    /* Photo */
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(160deg, #EFEDE6 0%, #E7E4DA 100%);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .portrait .placeholder {
+      font-family: var(--body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ---------- Sections ---------- */
+    section { scroll-margin-top: 5rem; }
+
+    .section {
+      padding-top: clamp(3.5rem, 8vw, 6rem);
+      padding-bottom: clamp(1rem, 3vw, 2rem);
+    }
+    .section-head {
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .narrative p {
+      max-width: var(--measure);
+      margin: 0 0 1.5rem;
+    }
+    .narrative p:last-child { margin-bottom: 0; }
+
+    /* thin divider */
+    .rule {
+      border: none;
+      border-top: 1px solid rgba(35, 35, 43, 0.1);
+      margin: clamp(3rem, 7vw, 5rem) 0 0;
+      max-width: var(--max);
+    }
+
+    /* ---------- Experience ---------- */
+    .xp-intro {
+      font-family: var(--display);
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      max-width: 24ch;
+      margin: 0;
+    }
+
+    .entry {
+      padding: clamp(2rem, 4vw, 2.75rem) 0;
+      border-top: 1px solid rgba(35, 35, 43, 0.1);
+    }
+    .entry:first-of-type { border-top: none; padding-top: 0; }
+
+    .entry-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem 3rem;
+    }
+    @media (min-width: 820px) {
+      .entry-grid {
+        grid-template-columns: 12rem minmax(0, 1fr);
+        gap: 0 3rem;
+      }
+    }
+
+    .entry-org {
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 0.35rem;
+    }
+    .entry-meta {
+      font-size: 0.92rem;
+      color: var(--warm-gray);
+      margin: 0;
+    }
+    .entry-dates {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--warm-gray);
+    }
+    .entry-body p {
+      max-width: var(--measure);
+      margin: 0 0 1.1rem;
+    }
+    .skills {
+      max-width: var(--measure);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--warm-gray);
+      margin: 0;
+    }
+    .skills .skills-label {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Recognition + Education compact blocks */
+    .compact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 5vw, 3rem);
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    }
+    @media (min-width: 720px) {
+      .compact-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .compact h3 {
+      margin: 0 0 1rem;
+    }
+    .compact ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      max-width: var(--measure);
+    }
+    .compact li {
+      font-size: 0.95rem;
+      color: var(--ink);
+      padding: 0.15rem 0;
+    }
+    .compact li .year { color: var(--warm-gray); }
+    .compact p {
+      font-size: 0.92rem;
+      color: var(--warm-gray);
+      max-width: var(--measure);
+      margin: 0;
+    }
+
+    /* ---------- Work with me ---------- */
+    .offer {
+      margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+    }
+    .offer-item {
+      max-width: var(--measure);
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(35, 35, 43, 0.1);
+    }
+    .offer-item:first-child { border-top: none; }
+    .offer-item h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+      display: inline;
+    }
+    .offer-item p {
+      margin: 0.4rem 0 0;
+    }
+
+    /* Contact */
+    .contact {
+      margin-top: clamp(3rem, 6vw, 4.5rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+    }
+    @media (min-width: 820px) {
+      .contact { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+    }
+    .contact-intro p { max-width: 34ch; margin: 0.75rem 0 0; }
+
+    .btn-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 1.5rem;
+      font-family: var(--body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--paper);
+      background: var(--indigo);
+      padding: 0.7rem 1.25rem;
+      border-radius: 2px;
+      border: none;
+      transition: background 0.15s ease;
+    }
+    .btn-linkedin:hover { background: #22307a; border: none; }
+    .btn-linkedin svg { display: block; }
+
+    /* Form */
+    form { max-width: 30rem; }
+    .field { margin-bottom: 1.25rem; }
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      font-family: var(--body);
+      font-size: 1rem;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(35, 35, 43, 0.22);
+      padding: 0.5rem 0;
+      border-radius: 0;
+      transition: border-color 0.15s ease;
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 5.5rem;
+      line-height: 1.55;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-color: var(--indigo);
+    }
+    .btn-submit {
+      font-family: var(--body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--paper);
+      background: var(--ink);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn-submit:hover { background: #000; }
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--indigo);
+      min-height: 1.2rem;
+    }
+    .form-status.error { color: #a13b2b; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin-top: clamp(4rem, 9vw, 7rem);
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid rgba(35, 35, 43, 0.08);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    footer .label { color: var(--warm-gray); }
+    footer a { font-size: 0.85rem; }
+
+    /* ---------- Mobile nav ---------- */
+    @media (max-width: 719px) {
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+        background: var(--paper);
+        border-bottom: 1px solid rgba(35, 35, 43, 0.08);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease;
+      }
+      .nav-links.open { max-height: 240px; }
+      .nav-links a {
+        padding: 0.9rem clamp(1.25rem, 5vw, 3rem);
+        border-bottom: 1px solid rgba(35, 35, 43, 0.06);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand">Michelle Zhu</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="7" x2="19" y2="7" />
+          <line x1="3" y1="15" x2="19" y2="15" />
+        </svg>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work with me</a>
+      </nav>
+    </div>
+  </header>
+
+  <a id="top"></a>
+
+  <!-- ===================== HERO / ABOUT ===================== -->
+  <section id="about" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="label kicker">Michelle Zhu — San Francisco</p>
+          <h1>Earned empathy,<br /><span class="accent">rolled-up sleeves.</span></h1>
+          <p class="subhead">Founder and operating partner to early stage teams.</p>
+        </div>
+        <div class="portrait">
+          <!-- Replace this placeholder with: <img src="michelle.jpg" alt="Michelle Zhu" /> -->
+          <span class="placeholder">Photo<br />coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT NARRATIVE ===================== -->
+  <section class="section">
+    <div class="wrap narrative">
+      <p>I work with mission-driven deep tech and technology startups, usually alongside a technical founder who's passionate about the product and science and wants a partner for everything else. For six years, I did that as CEO and co-founder of Huue, which started as a UC Berkeley PhD thesis and ended up a VC-backed color company, raising $25M over multiple rounds. I took the core technology license out of the university, built the go-to-market from scratch, closed the first contracts, and built the team and culture across R&D, operations, and commercial. It was my MBA and PhD at once; I learned by doing, and because I'm someone who is constantly reflecting on how to do a thing better, I came out of it with actual frameworks and principles for the initiatives I took on (in addition to a few fun war stories).</p>
+
+      <p>Before Huue, I developed my business fundamentals in strategy consulting at Deloitte and business operations at Yelp. Working with Fortune 500 companies gave me experience across the P&L, data fluency, and the habit of learning new things fast. That made me a generalist who could be dropped into any situation. And while that still helps me onboard any project and company quickly, I've since developed a specialization of sorts in defining company vision and narrative, fundraising strategy, board preparation, strategic planning, and the operating cadence that connects all of it.</p>
+
+      <p>Because I've sat in the founder-CEO seat, I can meet founders where they actually are. I know how taxing things are when the technology is uncertain and money is finite, and how much courage it takes to choose to keep moving forward. I know what it feels like to have a hundred competing priorities, so I aim to be the most strategic conversation you have all week. I'm at my best rolling up my sleeves on the hard, unglamorous work: strategic operating plans, pitch decks, financial models, org design, AI implementation. I'm also unapologetically values-driven about how I work, which has never meant lowering the bar. The companies I want to help build are the ones solving the hard problems worth solving. That's why I put care into both how a company treats its people and whether it hits its numbers — in fact, I fundamentally believe the two are linked.</p>
+
+      <p>Off the clock, I'm a mom of two, and I love being a working mom. I aim to parent by modeling what it looks like to feel purposeful in what you do. And some days I'm just surviving the day-to-day.</p>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Experience</p>
+      </div>
+
+      <!-- Verity Impact -->
+      <div class="entry">
+        <div class="entry-grid">
+          <div>
+            <p class="entry-org">Verity Impact</p>
+            <p class="entry-meta">Founder and operating partner
+              <span class="entry-dates">2025 to present</span>
+            </p>
+          </div>
+          <div class="entry-body">
+            <p>I work across a portfolio of early stage companies, which have collectively raised over $100M of venture capital. Some of it is advisory: sitting alongside founder-CEOs on the strategic challenges that are keeping them up, whether that's the fundraise, the plan behind it, or defining what the company actually is. Some of it is closer in. I also partner with technical founders at the pre-seed stage to spin technologies out of university labs, which is the same lab-to-market problem I lived at Huue. The other thread running through all of the work these days is AI, which I build into my own workflows and help clients embed into theirs.</p>
+            <p class="skills"><span class="skills-label">Skills:</span> university spinout and IP strategy · fundraising strategy, pitch narrative, and financial modeling · strategic operating plans · market analysis and commercialization strategy · leadership coaching and people operations · AI-enabled operations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Huue -->
+      <div class="entry">
+        <div class="entry-grid">
+          <div>
+            <p class="entry-org">Huue</p>
+            <p class="entry-meta">CEO and co-founder
+              <span class="entry-dates">2019 to 2024</span>
+            </p>
+          </div>
+          <div class="entry-body">
+            <p>I was the only commercial and operating person in a deeply technical company, which meant every function that wasn't science was mine to build: the vision, the fundraising, the customers, the hiring, the finances, the culture, the hard conversations. I raised $25M across multiple rounds through a volatile market, closed our first commercial partnerships with global brands, took a product from ambiguous customer signal to outperforming the incumbent by 2x, and ran a 50x manufacturing scale-up that cut unit cost 92% in a year. Along the way Huue was named a TIME Best Invention and a World Economic Forum Technology Pioneer, and I was the company's external voice on stage at SXSW and CES. What I didn't expect was how much I would love the specific work of supporting technical talent to flourish, giving brilliant scientists the context, the resources, and the clarity to do the thing only they can do.</p>
+            <p class="skills"><span class="skills-label">Skills:</span> fundraising and board management · goal setting and operating rhythms · org design and people leadership · financial management · restructuring · manufacturing scale-up · brand and marketing · go-to-market and pricing strategy · commercial partnerships and deal structuring</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yelp -->
+      <div class="entry">
+        <div class="entry-grid">
+          <div>
+            <p class="entry-org">Yelp</p>
+            <p class="entry-meta">Business operations and strategy
+              <span class="entry-dates">2017 to 2019</span>
+            </p>
+          </div>
+          <div class="entry-body">
+            <p>I chose Yelp deliberately. I wanted to move into tech, and I wanted to work with a world-class business operations and analytics team, because I'd decided data literacy was critical in the toolkit. I honed my SQL, Python, and Tableau skills and used that fluency to help analytics drive the rest of the business. Most of that work sat with product and sales leadership during the launch of the self-serve business model. I ran the quantitative analysis behind B2B marketing promotions and led cross-functional initiatives with the marketing department. It's also where I first leaned into the people-oriented side of leading, running professional development and designing the team's feedback system.</p>
+            <p class="skills"><span class="skills-label">Skills:</span> marketing and pricing analytics · sales compensation design · cross-functional program leadership · business model launch · SQL, Python, Tableau</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deloitte -->
+      <div class="entry">
+        <div class="entry-grid">
+          <div>
+            <p class="entry-org">Deloitte Consulting</p>
+            <p class="entry-meta">Business consultant, strategy and operations
+              <span class="entry-dates">2015 to 2017</span>
+            </p>
+          </div>
+          <div class="entry-body">
+            <p>Where I built the fundamentals. I worked with Fortune 50-scale clients across the full range of the P&L, from top-line growth strategy and market assessments to organizational design and strategic sourcing, and built the financial models underneath those decisions. I kindled my interest in product and tech with an internal rotation in the Product & Solutions group, where I managed portfolio allocation across the firm's software investments. Most importantly, I learned how to learn fast, and can still ramp up quickly on any topic.</p>
+            <p class="skills"><span class="skills-label">Skills:</span> financial modeling and scenario planning · operational program launch and playbook design · growth strategy and market assessment · strategic sourcing · organizational design</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recognition + Education -->
+      <div class="compact-grid">
+        <div class="compact">
+          <p class="label" style="margin-bottom: 1rem;">Recognition</p>
+          <ul>
+            <li>World Economic Forum Technology Pioneer <span class="year">· 2023</span></li>
+            <li>Forbes 30 Under 30 <span class="year">· 2022</span></li>
+            <li>TIME Best Inventions <span class="year">· 2021</span></li>
+            <li>Inc. 100 Female Founders <span class="year">· 2021</span></li>
+          </ul>
+          <p>Speaking and teaching: World Economic Forum, CES 2024, SXSW 2022, guest lecturer at Stanford GSB and Wharton.</p>
+        </div>
+        <div class="compact">
+          <p class="label" style="margin-bottom: 1rem;">Education</p>
+          <p style="color: var(--ink);">Washington University, Olin Business School. BS in Business Administration, finance and economics, magna cum laude.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ===================== WORK WITH ME ===================== -->
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Work with me</p>
+      </div>
+
+      <p class="xp-intro">At any given time I'm working across a portfolio of mission-driven technology companies, in engagements that usually look like one of the following:</p>
+
+      <div class="offer">
+        <div class="offer-item">
+          <h3>Fractional operating partner.</h3>
+          <p>We start with your fundraising &amp; strategic operating plan, and from there identify the critical projects and goals. I embed with the team and help run the commercial and operating side with a focus on those priorities.</p>
+        </div>
+        <div class="offer-item">
+          <h3>Advisory and board work.</h3>
+          <p>At the governance level, or as a business-first coach via a recurring strategic conversation with a founder-CEO about whatever is hardest that month.</p>
+        </div>
+        <div class="offer-item">
+          <h3>Co-founding.</h3>
+          <p>For pre-seed technical founders spinning something out of a lab, I sometimes come in as a commercial co-founder.</p>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="contact">
+        <div class="contact-intro">
+          <p class="label">Get in touch</p>
+          <p>The best place to reach me is LinkedIn. Or send a note using the form and it'll come straight to my inbox.</p>
+          <a class="btn-linkedin" href="https://linkedin.com/in/michellejzhu35" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <div class="contact-form">
+          <!-- Formspree: replace FORMSPREE_ENDPOINT with your real endpoint, e.g. https://formspree.io/f/abcdwxyz -->
+          <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ENDPOINT" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send message</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap footer-inner">
+      <span class="label">Michelle Zhu — San Francisco</span>
+      <a href="https://linkedin.com/in/michellejzhu35" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close menu after tapping a link (mobile)
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Contact form — AJAX submit to Formspree so the visitor stays on the page
+    (function () {
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('form-status');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Guard: remind to swap the placeholder endpoint before going live
+        if (form.action.indexOf('FORMSPREE_ENDPOINT') !== -1) {
+          status.className = 'form-status error';
+          status.textContent = 'Form not connected yet — add your Formspree endpoint.';
+          return;
+        }
+
+        var data = new FormData(form);
+        status.className = 'form-status';
+        status.textContent = 'Sending…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (response.ok) {
+            form.reset();
+            status.textContent = 'Thank you — your message is on its way.';
+          } else {
+            response.json().then(function (d) {
+              var msg = (d && d.errors) ? d.errors.map(function (x) { return x.message; }).join(', ') : 'Something went wrong.';
+              status.className = 'form-status error';
+              status.textContent = msg;
+            }).catch(function () {
+              status.className = 'form-status error';
+              status.textContent = 'Something went wrong. Please try LinkedIn instead.';
+            });
+          }
+        }).catch(function () {
+          status.className = 'form-status error';
+          status.textContent = 'Network error. Please try LinkedIn instead.';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
