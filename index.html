@@ -35,6 +35,28 @@
 
   <!-- ===================== HERO / ABOUT ===================== -->
   <section id="about" class="hero">
+    <svg class="kintsugi kintsugi--hero-bl" viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="kNavy" x1="0" y1="1" x2="0.7" y2="0">
+          <stop offset="0" stop-color="#1b2551" /><stop offset="1" stop-color="#2c3a86" />
+        </linearGradient>
+        <linearGradient id="kGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#8A6A2E" /><stop offset="0.28" stop-color="#F0DCA0" />
+          <stop offset="0.52" stop-color="#C79A4E" /><stop offset="0.76" stop-color="#EAD08A" /><stop offset="1" stop-color="#7c5f2a" />
+        </linearGradient>
+        <filter id="kTorn" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.022 0.03" numOctaves="2" seed="7" result="t" />
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="20" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+      <g filter="url(#kTorn)">
+        <path d="M-20,340 L-20,150 C55,148 110,196 165,232 C220,268 262,286 292,340 Z" fill="url(#kNavy)" />
+        <path d="M-20,150 C55,148 110,196 165,232 C220,268 262,286 292,340" fill="none" stroke="url(#kGold)" stroke-width="7" stroke-linecap="round" />
+      </g>
+      <g fill="#C9A44E">
+        <circle cx="150" cy="150" r="3" /><circle cx="205" cy="196" r="2.2" /><circle cx="112" cy="182" r="1.9" /><circle cx="258" cy="244" r="2.5" /><circle cx="88" cy="206" r="1.5" />
+      </g>
+    </svg>
     <div class="wrap">
       <div class="hero-grid">
         <div>
